@@ -1,14 +1,14 @@
 # Xinzuo Shopify clone — TYICDI hiring task
 
-You're getting a near-real clone of [xinzuo.com.au](https://xinzuo.com.au) running on your **own** free Shopify dev store. Your 2-hour timed window starts when you submit on the [hiring portal](https://apply.toldyouicoulddoit.com). Setup below does **not** count against the timer — do it ahead of time.
+A sanitised, single-command clone of [xinzuo.com.au](https://xinzuo.com.au) running on your **own** free Shopify dev store: real Liquid theme, ~50 sample products (the ones the homepage actually references, plus backfill), 68 collections, 17 pages, 5 articles, and 162 optimised images. Your 2-hour timed window starts when you tick the commit gate on the [hiring portal](https://apply.toldyouicoulddoit.com). Setup below does **not** count against the timer — do it ahead of time.
 
-**Measured setup time: under 5 minutes of script time** (plus ~5 min for first-time Shopify Partners signup if you've never used it).
+**Measured script time: under 5 minutes** (plus 10–15 min for first-time Shopify Partners signup if you've never used it — that part is one-time).
 
 ---
 
 ## Setup — copy and paste, top to bottom
 
-### A. One-time Shopify side (~5 min if you've never done this)
+### A. One-time Shopify side (10–15 min if you've never done this)
 
 1. **Create a Shopify Partner account** → <https://www.shopify.com/partners/signup> (free, no card, instant)
 2. **Make a development store**: Partner dashboard → **Stores** → **Add store** → **Create development store** → pick **"Create a store to test and build"** → any name will do.
@@ -32,9 +32,14 @@ You're getting a near-real clone of [xinzuo.com.au](https://xinzuo.com.au) runni
 git clone https://github.com/dintyo/xinzuo-theme-snapshot.git
 cd xinzuo-theme-snapshot
 
-# 2. Copy the env template and paste your values from step A
+# 2. Copy the env template
+#    macOS / Linux / Git Bash:
 cp .env.example .env
-# then edit .env — replace the two placeholder values with your store URL + token
+#    Windows cmd / PowerShell (run from the repo root):
+#    copy .env.example .env
+#
+#    Then open .env in any text editor and replace the two placeholder values
+#    with your store URL and token. Save as plain UTF-8 (no BOM) if on Windows.
 
 # 3. Run it (~4.5 min)
 node scripts/setup.mjs --write
@@ -88,7 +93,7 @@ Submit your repo + Loom + `NOTE.md` summary on the [hiring portal](https://apply
 ## Script options
 
 ```bash
-# Default — slim seed (49 theme-referenced products + all media), ~4.5 min
+# Default — slim seed (~50 products biased to what the theme references + all media), ~4.5 min
 node scripts/setup.mjs --write
 
 # Full catalogue — 237 products + 77 articles, ~10 min
@@ -115,7 +120,7 @@ node scripts/push-theme.mjs --write           # theme only
 |---|---|
 | `git clone` | 4s |
 | Upload 162 media files (logo, hero, icons, testimonials, payment badges) | 80s |
-| Seed 49 products + 68 collections + 17 pages + 5 articles | 65s |
+| Seed ~50 products + 68 collections + 17 pages + 5 articles | 65s |
 | Push + publish theme (584 files) | 130s |
 | **Total** | **~4.5 min** |
 
@@ -149,4 +154,8 @@ In short: only what you'd see by browsing xinzuo.com.au with DevTools open.
 
 ## License
 
-Shared **solely for the TYICDI developer hiring task**. Brand, product names, content © Xinzuo Australia / Told You I Could Do It. Do not redistribute or fork for commercial use.
+Shared **solely for the TYICDI developer hiring task**. Brand, product names, copy and imagery © Xinzuo Australia / Told You I Could Do It.
+
+**You may** publish your own fix in a public GitHub repo for the sole purpose of submitting this challenge — that's how we read your work. Keep the brand assets attributed; don't claim the underlying content as your own.
+
+**You may not** use the brand, content, theme, or any derivative for commercial purposes, in a portfolio piece beyond a reference to "TYICDI hiring task", or fork it as the basis of another store.
