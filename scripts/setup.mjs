@@ -11,11 +11,13 @@
  * Requires .env with SHOPIFY_STORE_URL + SHOPIFY_ACCESS_TOKEN.
  */
 
+import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
 import path from 'node:path';
 
 const startedAt = Date.now();
-const scriptDir = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'));
+const __filename = fileURLToPath(import.meta.url);
+const scriptDir = path.dirname(__filename);
 const args = process.argv.slice(2);
 
 // Each child prefixes its lines so the interleaved output stays legible.
