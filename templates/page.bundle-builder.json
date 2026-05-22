@@ -120,6 +120,15 @@
             "label": "Save 15%",
             "discount_code": "BUNDLE-15"
           }
+        },
+        "tier_3": {
+          "type": "discount_tier",
+          "settings": {
+            "min_items": 7,
+            "discount_percent": 20,
+            "label": "Save 20%",
+            "discount_code": "BUNDLE-20"
+          }
         }
       },
       "block_order": [
@@ -137,7 +146,8 @@
         "series_ji",
         "series_pin",
         "tier_1",
-        "tier_2"
+        "tier_2",
+        "tier_3"
       ],
       "settings": {
         "heading": "Build Your Knife Bundle",

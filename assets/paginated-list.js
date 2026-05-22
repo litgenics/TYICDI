@@ -1,8 +1,8 @@
-import { Component } from '@theme/component';
-import { sectionRenderer } from '@theme/section-renderer';
-import { requestIdleCallback, viewTransition } from '@theme/utilities';
-import { ThemeEvents } from '@theme/events';
-import { PaginatedListAspectRatioHelper } from '@theme/paginated-list-aspect-ratio';
+import { Component } from './component.js';
+import { sectionRenderer } from './section-renderer.js';
+import { requestIdleCallback, viewTransition } from './utilities.js';
+import { ThemeEvents } from './events.js';
+import { PaginatedListAspectRatioHelper } from './paginated-list-aspect-ratio.js';
 
 /**
  * A custom element that renders a paginated list of items.

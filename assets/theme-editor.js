@@ -1,5 +1,5 @@
 // Theme editor specific logic
-import { updateAllHeaderCustomProperties } from '@theme/critical';
+import { updateAllHeaderCustomProperties } from './critical.js';
 
 /**
  * @param {Event} event

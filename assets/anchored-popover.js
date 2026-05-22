@@ -1,5 +1,5 @@
-import { Component } from '@theme/component';
-import { debounce, requestIdleCallback } from '@theme/utilities';
+import { Component } from './component.js';
+import { debounce, requestIdleCallback } from './utilities.js';
 
 /**
  * A custom element that manages the popover + popover trigger relationship for anchoring.

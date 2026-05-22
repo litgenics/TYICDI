@@ -1,5 +1,5 @@
-import { Component } from '@theme/component';
-import { CartAddEvent } from '@theme/events';
+import { Component } from './component.js';
+import { CartAddEvent } from './events.js';
 
 class BundleBuilderComponent extends Component {
   /** @type {Set<string>} Set of selected product IDs */
@@ -320,18 +320,27 @@ class BundleBuilderComponent extends Component {
       this.refs.countText.textContent = `${count} of ${this.#maxItems} selected`;
     }
 
-    // Update progress text in header
+    // Update progress text in header with milestone animations
     if (this.refs.progressText) {
+      const oldText = this.refs.progressText.textContent;
       if (count === 0) {
         this.refs.progressText.textContent = `Select at least ${this.#minItems} items to unlock your discount`;
-        this.refs.progressText.classList.remove('bundle-builder__progress--complete');
+        this.refs.progressText.classList.remove('bundle-builder__progress--complete', 'bundle-builder__progress--unlocked');
       } else if (count < this.#minItems) {
         const remaining = this.#minItems - count;
         this.refs.progressText.textContent = `Select ${remaining} more item${remaining > 1 ? 's' : ''} to unlock your discount`;
-        this.refs.progressText.classList.remove('bundle-builder__progress--complete');
+        this.refs.progressText.classList.remove('bundle-builder__progress--complete', 'bundle-builder__progress--unlocked');
       } else {
-        this.refs.progressText.textContent = `${count} item${count > 1 ? 's' : ''} selected — discount applied at checkout!`;
+        const activeTier = [...this.#tiers].reverse().find(t => count >= t.minItems);
+        const discountText = activeTier ? `${activeTier.discountPercent}% OFF UNLOCKED` : 'DISCOUNT UNLOCKED';
+        this.refs.progressText.textContent = `🎉 ${count} items selected — ${discountText}!`;
         this.refs.progressText.classList.add('bundle-builder__progress--complete');
+        
+        // Brief pop animation if milestone just hit
+        if (oldText !== this.refs.progressText.textContent) {
+          this.refs.progressText.classList.add('bundle-builder__progress--unlocked');
+          setTimeout(() => this.refs.progressText.classList.remove('bundle-builder__progress--unlocked'), 1000);
+        }
       }
     }
 

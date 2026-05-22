@@ -1,4 +1,4 @@
-import { Component } from '@theme/component';
+import { Component } from './component.js';
 
 /**
  * A small utility for setting up an animated disclosure panel using inert and CSS display grid for height auto animation.

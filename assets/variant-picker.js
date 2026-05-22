@@ -1,12 +1,12 @@
-import { Component } from '@theme/component';
-import { VariantSelectedEvent, VariantUpdateEvent } from '@theme/events';
-import { morph } from '@theme/morph';
-import { requestYieldCallback } from '@theme/utilities';
+import { Component } from './component.js';
+import { VariantSelectedEvent, VariantUpdateEvent } from './events.js';
+import { morph } from './morph.js';
+import { requestYieldCallback } from './utilities.js';
 
 /**
  * A custom element that manages a variant picker.
  *
- * @template {import('@theme/component').Refs} [Refs = {}]
+ * @template {import('./component.js').Refs} [Refs = {}]
  *
  * @extends Component<Refs>
  */

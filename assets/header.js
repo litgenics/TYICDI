@@ -1,6 +1,6 @@
-import { calculateHeaderGroupHeight } from '@theme/critical';
-import { Component } from '@theme/component';
-import { onDocumentLoaded, changeMetaThemeColor } from '@theme/utilities';
+import { calculateHeaderGroupHeight } from './critical.js';
+import { Component } from './component.js';
+import { onDocumentLoaded, changeMetaThemeColor } from './utilities.js';
 
 /**
  * @typedef {Object} HeaderComponentRefs

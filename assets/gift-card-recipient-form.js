@@ -1,5 +1,5 @@
-import { Component } from '@theme/component';
-import { ThemeEvents, CartErrorEvent, CartAddEvent } from '@theme/events';
+import { Component } from './component.js';
+import { ThemeEvents, CartErrorEvent, CartAddEvent } from './events.js';
 
 /**
  * @typedef {Object} GiftCardRecipientFormRefs

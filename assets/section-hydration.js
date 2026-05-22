@@ -1,5 +1,5 @@
-import { buildSectionSelector, normalizeSectionId, sectionRenderer } from '@theme/section-renderer';
-import { requestIdleCallback, onDocumentReady } from '@theme/utilities';
+import { buildSectionSelector, normalizeSectionId, sectionRenderer } from './section-renderer.js';
+import { requestIdleCallback, onDocumentReady } from './utilities.js';
 
 /**
  * Hydrates a section using the Section Rendering API preserving states.

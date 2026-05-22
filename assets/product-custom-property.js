@@ -1,5 +1,5 @@
 // assets/product-custom-property.js
-import { Component } from '@theme/component';
+import { Component } from './component.js';
 
 /**
  * @typedef {object} ProductCustomPropertyRefs

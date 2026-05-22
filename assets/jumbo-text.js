@@ -1,5 +1,5 @@
-import { ResizeNotifier } from '@theme/critical';
-import { prefersReducedMotion } from '@theme/utilities';
+import { ResizeNotifier } from './critical.js';
+import { prefersReducedMotion } from './utilities.js';
 
 /**
  * A custom element that automatically sizes text to fit its container width.

@@ -115,6 +115,17 @@
                 </button>
               {%- endif -%}
             {%- endfor -%}
+            {%- comment -%} Add Accessories Tab {%- endcomment -%}
+            <button
+              class="bundle-tabs__tab"
+              ref="tabs[]"
+              data-series="accessories"
+              on:click="/handleTabClick/accessories"
+              aria-pressed="false"
+            >
+              Accessories
+              <span class="bundle-tabs__count" data-series-count="accessories"></span>
+            </button>
           </div>
           <div class="bundle-tabs__fade bundle-tabs__fade--left" ref="tabFadeLeft"></div>
           <div class="bundle-tabs__fade bundle-tabs__fade--right" ref="tabFadeRight"></div>
@@ -144,6 +155,15 @@
       {%- if has_products -%}
         <div class="bundle-builder__grid" ref="grid">
           {%- assign global_index = 0 -%}
+          {%- assign accessory_keywords = "stone,guard,sharpen,board,roll,stand,magnetic,scissors,apron,whetstone" | split: "," -%}
+          
+          {%- comment -%} Add a virtual block for all products to find accessories {%- endcomment -%}
+          {%- assign all_collections = "" -%}
+          {%- for block in series_blocks -%}
+             {%- assign all_collections = all_collections | append: block.settings.collection.handle | append: "," -%}
+          {%- endfor -%}
+          {%- assign all_collections = all_collections | split: "," -%}
+
           {%- for block in series_blocks -%}
             {%- assign coll = block.settings.collection -%}
             {%- if coll != blank -%}
@@ -162,6 +182,15 @@
 
                   {%- comment -%} Build series membership from product.collections {%- endcomment -%}
                   {%- assign product_series = "" -%}
+                  {%- assign is_accessory = false -%}
+                  {%- assign p_title = product.title | downcase -%}
+                  {%- for kw in accessory_keywords -%}
+                    {%- if p_title contains kw -%}
+                      {%- assign is_accessory = true -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+
                   {%- for pc in product.collections -%}
                     {%- assign pc_check = pc.handle | prepend: "," | append: "," -%}
                     {%- assign handles_check = series_handles | prepend: "," | append: "," -%}
@@ -173,6 +202,10 @@
                       {%- endif -%}
                     {%- endif -%}
                   {%- endfor -%}
+
+                  {%- if is_accessory -%}
+                    {%- assign product_series = product_series | append: " accessories" -%}
+                  {%- endif -%}
 
                   {%- assign variant = product.selected_or_first_available_variant -%}
                   {%- assign global_index = global_index | plus: 1 -%}
